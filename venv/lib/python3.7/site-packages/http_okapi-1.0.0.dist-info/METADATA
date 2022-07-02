@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: http-okapi
+Version: 1.0.0
+Summary: A tool for working with HTTP APIs
+Home-page: https://github.com/jaraco/http-okapi
+Author: Jason R. Coombs
+Author-email: jaraco@jaraco.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=2.7
+Provides-Extra: docs
+Provides-Extra: testing
+Requires-Dist: importlib-resources; python_version < "3.7"
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: jaraco.packaging (>=3.2); extra == 'docs'
+Requires-Dist: rst.linker (>=1.9); extra == 'docs'
+Provides-Extra: testing
+Requires-Dist: pytest (>=3.5); extra == 'testing'
+Requires-Dist: pytest-sugar (>=0.9.1); extra == 'testing'
+Requires-Dist: collective.checkdocs; extra == 'testing'
+Requires-Dist: pytest-flake8; extra == 'testing'
+Requires-Dist: cherrypy; extra == 'testing'
+
+.. image:: https://img.shields.io/pypi/v/http-okapi.svg
+   :target: https://pypi.org/project/http-okapi
+
+.. image:: https://img.shields.io/pypi/pyversions/http-okapi.svg
+
+.. image:: https://img.shields.io/travis/jaraco/http-okapi/master.svg
+   :target: https://travis-ci.org/jaraco/http-okapi
+
+.. .. image:: https://img.shields.io/appveyor/ci/jaraco/http-okapi/master.svg
+..    :target: https://ci.appveyor.com/project/jaraco/http-okapi/branch/master
+
+.. .. image:: https://readthedocs.org/projects/http-okapi/badge/?version=latest
+..    :target: https://http-okapi.readthedocs.io/en/latest/?badge=latest
+
+A simple HTTP API tool.
+
+The Tool
+========
+
+The tool is an HTML page with a background image. These resources are
+presented as package resources of the ``http_okapi`` package. The
+resource filenames are ``okapi.html`` and ``okapibg.png``. The HTML
+page references ``okapibg.png`` by name, so the two files are meant
+to be served from the same path.
+
+CherryPy Handler
+================
+
+This package also presents a server implementation for CherryPy. To
+use it, simply bind the ``http_okapi.cherrypy.Server`` somewhere in
+your handler tree::
+
+    class MyServer:
+        okapi = http_okapi.cherrypy.Server()
+
+Then, the okapi tool will be available at that path.
+
+
